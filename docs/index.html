@@ -70,10 +70,21 @@
     }
     ul { margin: .4rem 0 0; padding-left: 1.15rem; }
     li { margin: .35rem 0; }
+    .flow {
+      display: grid;
+      gap: .6rem;
+      margin: .8rem 0 0;
+    }
+    .flow div {
+      background: var(--paper);
+      border-radius: 10px;
+      padding: .7rem 1rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
     .warn {
       border-left: 4px solid var(--accent);
       padding-left: 1rem;
-      color: var(--muted);
     }
     footer {
       text-align: center;
@@ -97,27 +108,38 @@
   <main>
     <section class="card">
       <h2>What it is</h2>
-      <p>You take a picture of a face on iPhone. A Mac running OpenFace measures facial Action Units. The app turns those into estimated PSPI (0 to 16), the same kind of scale researchers use. You can add your own 0 to 10 rating, save history, look at a graph, and export a CSV.</p>
+      <p>painTest is an iPhone app. You take a picture of a face. One computer in the background (OpenFace) measures facial Action Units. The app turns those into estimated PSPI, 0 to 16. You can add your own 0 to 10 rating, save history, look at a graph, and export a CSV.</p>
       <p>It is not a doctor and not a diagnosis. It can still act as a personal pain log: a face-based estimate plus your own rating, so patterns show up that you would miss from memory alone.</p>
     </section>
     <section class="card">
-      <h2>Why it exists</h2>
-      <p>Facial pain software is often trained on younger faces. Wrinkles can look like a frown or a squint, so older people get worse scores. Most apps just run the photo as-is. painTest lets you type your real age and optionally de-age toward a younger target (around 25) before OpenFace runs, then it keeps the original score next to it.</p>
+      <h2>How it helps</h2>
+      <p>Pain is easy to forget or rewrite. A photo plus a score plus a self-report is a record you can look at next week. That is useful when pain is hard to describe, and for a class or a small study that needs a CSV instead of a pile of screenshots.</p>
+      <p>Facial pain software is often trained on younger faces. Wrinkles can look like a frown or a squint, so older people get worse scores. Most apps run the photo as-is. painTest lets you type your real age and optionally de-age toward a younger target (around 25) before OpenFace runs, then it keeps the original score next to it.</p>
     </section>
     <section class="card">
       <h2>What you can do</h2>
       <ul>
-        <li>Guided camera with a face oval and live yaw / quality hints</li>
-        <li>Review, retake, or reuse the last good capture</li>
+        <li>One mode: Action Units (no separate “age look” preview)</li>
+        <li>Guided camera with a face oval, then review / retake</li>
         <li>Estimated PSPI and a full Action Unit list</li>
         <li>Self-report 0 to 10 and notes</li>
         <li>History, trends, CSV export</li>
-        <li>Same-Wi-Fi auto-find of the Mac, or a tunnel when you are away</li>
+        <li>Optional de-aging using the age you type in Settings</li>
       </ul>
+    </section>
+    <section class="card">
+      <h2>Where OpenFace runs</h2>
+      <p>The phone does not install OpenFace. It talks to <strong>one server</strong>. Right now that server is a Mac on the same Wi-Fi, or the same Mac through a Cloudflare tunnel when you are away. Cloudflare is only a pipe. It does not score the face.</p>
+      <div class="flow">
+        <div>1. iPhone takes the photo</div>
+        <div>2. Photo goes to one computer running OpenFace</div>
+        <div>3. Estimated PSPI comes back and is saved on the phone</div>
+      </div>
+      <p>A shipped app would be the same idea with a hosted server, so the user never installs OpenFace or Cloudflare. Photos would then go to that server instead of staying only on your Mac.</p>
     </section>
     <section class="card warn">
       <h2>Limits</h2>
-      <p>OpenFace runs on your Mac, not on Apple’s servers. Photos stay on the phone and that computer. Bad lighting and a turned head still wreck the number, which is why low-confidence shots get flagged. Treat the score as an estimate you track, not as a reason to start or stop treatment.</p>
+      <p>Treat the score as an estimate you track, not as a reason to start or stop treatment. Bad lighting and a turned head still wreck the number, which is why low-confidence shots get flagged. For this contest build, the Mac has to be on with the bridge running.</p>
     </section>
   </main>
   <footer>

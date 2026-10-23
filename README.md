@@ -8,7 +8,7 @@ iPhone app that estimates facial pain from a photo using OpenFace Action Units (
 
 ## What it does
 
-- Guided camera (face oval, yaw / quality hints), then review / retake
+- Guided camera (face oval), then review / retake
 - OpenFace on your Mac (same Wi-Fi or a tunnel)
 - Estimated PSPI, Action Unit list, 0–10 self-report, history, trends, CSV export
 - Optional: type your age and de-age toward a target (default 25) before OpenFace
@@ -21,8 +21,12 @@ iPhone app that estimates facial pain from a photo using OpenFace Action Units (
 
 OpenFace and FaceFusion installs are **not** in this repo (too large). You need those on the Mac separately.
 
-## Run
+## Run (demo setup)
+
+The iPhone is the app. OpenFace runs on **one computer** (your Mac). Cloudflare is only a tunnel to that Mac, not the scorer.
 
 1. Open `painTest.xcodeproj` in Xcode, run on an iPhone.
 2. On the Mac: `python3 scripts/openface_server.py` (OpenFace built under `OpenFace/`).
 3. Same Wi-Fi: the app finds the bridge. Away from home: paste the tunnel URL in Settings.
+
+A shipped version would point the phone at one hosted server so the user never installs OpenFace.
