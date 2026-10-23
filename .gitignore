@@ -1,0 +1,13 @@
+.DerivedData/
+OpenFace/
+FaceFusion/
+xcuserdata/
+*.xcuserstate
+scripts/CURRENT_OPENFACE_URL.txt
+.DS_Store
+*.swp
+.env
+*.onnx
+*.hash
+__pycache__/
+*.pyc

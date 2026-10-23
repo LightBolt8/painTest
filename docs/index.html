@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>painTest</title>
+  <meta name="description" content="painTest estimates facial pain from a photo using OpenFace. A personal pain log, not a diagnosis." />
+  <link rel="icon" href="logo.png" />
+  <style>
+    :root {
+      --navy: #0b3a66;
+      --teal: #1a7a9c;
+      --ink: #0f2744;
+      --muted: #5a6f86;
+      --paper: #f4f8fb;
+      --card: #ffffff;
+      --accent: #e86b4a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    header {
+      background: linear-gradient(180deg, #1488a8 0%, #0b3a66 100%);
+      color: #fff;
+      text-align: center;
+      padding: 2.5rem 1.25rem 3rem;
+    }
+    header img.cover {
+      width: min(720px, 100%);
+      border-radius: 16px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.28);
+      display: block;
+      margin: 0 auto 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0 0 .4rem;
+      letter-spacing: -.03em;
+    }
+    .tag {
+      opacity: .9;
+      font-size: 1.1rem;
+      margin: 0 auto;
+      max-width: 36rem;
+    }
+    .links { margin-top: 1.25rem; display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+    a.btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--navy);
+      font-weight: 650;
+      text-decoration: none;
+      padding: .65rem 1.1rem;
+      border-radius: 999px;
+    }
+    a.btn.ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.55); }
+    main { max-width: 760px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    section { margin: 2rem 0; }
+    h2 { color: var(--navy); margin: 0 0 .75rem; }
+    .card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 1.15rem 1.25rem;
+      box-shadow: 0 1px 0 rgba(11,58,102,.06), 0 8px 24px rgba(11,58,102,.06);
+    }
+    ul { margin: .4rem 0 0; padding-left: 1.15rem; }
+    li { margin: .35rem 0; }
+    .warn {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      color: var(--muted);
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+      padding: 0 1rem 2.5rem;
+    }
+    footer a { color: var(--teal); }
+  </style>
+</head>
+<body>
+  <header>
+    <img class="cover" src="cover.jpg" alt="painTest: estimate pain from a face photo" />
+    <h1>painTest</h1>
+    <p class="tag">A face photo in, an estimated pain score out. Built so wrinkles on older faces are less likely to get counted as pain.</p>
+    <div class="links">
+      <a class="btn" href="https://github.com/LightBolt8/painTest">Source on GitHub</a>
+      <a class="btn ghost" href="https://github.com/LightBolt8/painTest#readme">How to run it</a>
+    </div>
+  </header>
+  <main>
+    <section class="card">
+      <h2>What it is</h2>
+      <p>You take a picture of a face on iPhone. A Mac running OpenFace measures facial Action Units. The app turns those into estimated PSPI (0 to 16), the same kind of scale researchers use. You can add your own 0 to 10 rating, save history, look at a graph, and export a CSV.</p>
+      <p>It is not a doctor and not a diagnosis. It can still act as a personal pain log: a face-based estimate plus your own rating, so patterns show up that you would miss from memory alone.</p>
+    </section>
+    <section class="card">
+      <h2>Why it exists</h2>
+      <p>Facial pain software is often trained on younger faces. Wrinkles can look like a frown or a squint, so older people get worse scores. Most apps just run the photo as-is. painTest lets you type your real age and optionally de-age toward a younger target (around 25) before OpenFace runs, then it keeps the original score next to it.</p>
+    </section>
+    <section class="card">
+      <h2>What you can do</h2>
+      <ul>
+        <li>Guided camera with a face oval and live yaw / quality hints</li>
+        <li>Review, retake, or reuse the last good capture</li>
+        <li>Estimated PSPI and a full Action Unit list</li>
+        <li>Self-report 0 to 10 and notes</li>
+        <li>History, trends, CSV export</li>
+        <li>Same-Wi-Fi auto-find of the Mac, or a tunnel when you are away</li>
+      </ul>
+    </section>
+    <section class="card warn">
+      <h2>Limits</h2>
+      <p>OpenFace runs on your Mac, not on Apple’s servers. Photos stay on the phone and that computer. Bad lighting and a turned head still wreck the number, which is why low-confidence shots get flagged. Treat the score as an estimate you track, not as a reason to start or stop treatment.</p>
+    </section>
+  </main>
+  <footer>
+    Congressional App Challenge 2026 · <a href="https://github.com/LightBolt8/painTest">LightBolt8/painTest</a>
+  </footer>
+</body>
+</html>
